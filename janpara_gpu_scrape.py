@@ -107,7 +107,7 @@ Y_LABEL_FONTSIZE = 12           # Y軸ラベルのフォントサイズ,default,
 # ============================================================
 # Global Settings
 # ============================================================
-VERSION = "1.0"
+VERSION = "1.1"
 
 # デフォルトの調査対象
 DEFAULT_TARGETS = {
@@ -473,6 +473,18 @@ def run_scrape(targets: Dict[str, List[str]], args):
 # ============================================================
 # Statistics & Graph
 # ============================================================
+def extract_model_number(model: str) -> int:
+    m = re.search(r"(\d+)", model)
+    if m:
+        return int(m.group(1))
+    return 0
+
+def extract_capacity_number(capacity: str) -> int:
+    m = re.search(r"(\d+)", capacity)
+    if m:
+        return int(m.group(1))
+    return 0
+
 @dataclass
 class StatRow:
     brand: str
@@ -486,8 +498,8 @@ class StatRow:
 
     @property
     def sort_key(self):
-        # グラフでの並び順: ブランド -> 容量 -> モデル名
-        return (self.brand, self.capacity, self.model)
+        # グラフでの並び順: ブランド -> 容量(数値) -> モデル名(数値)
+        return (self.brand, extract_model_number(self.model), extract_capacity_number(self.capacity))
 
 def load_stats_from_dir(data_dir: Path, target_brand: str = None) -> List[StatRow]:
     rows = []
@@ -532,7 +544,7 @@ def load_stats_from_dir(data_dir: Path, target_brand: str = None) -> List[StatRo
                 brand=brand.title(),
                 capacity=capacity.upper(),
                 model=model,
-                label=f"{model} ({len(prices)})",
+                label=f"{model}, {capacity.upper()}",
                 min_price=min(prices),
                 avg_price=int(statistics.mean(prices)),
                 max_price=max(prices),
