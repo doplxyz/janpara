@@ -371,6 +371,10 @@ class GPUScraper:
                     model = m_model.group(1)
                     model = f"RTX{model}"
 
+                # Quadroを除外
+                if re.search(r"Quadro", text, re.IGNORECASE):
+                    model = None
+
             elif self.brand.lower() == "radeon":
                 # Radeon (RX/Vegaのみ, Ryzen/Apple除外)
                 if RADEON_EXCLUDE_RE.search(text):
