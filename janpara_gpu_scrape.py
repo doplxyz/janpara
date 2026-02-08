@@ -6,11 +6,12 @@ janpara_gpu_scrape.py
 じゃんぱら (janpara.co.jp) の GPU (GeForce / Radeon) 価格スクレイピング＋グラフ生成ツール。
 既存の janpara_scrape_geforce.py と janpara_scrape_radeon.py を統合・強化したもの。
 
-[Version 1.0]
+[Version 1.１]
   - GeForceとRadeonのVRAM容量別一括調査機能
   - Bot対策強化（ページ遷移10-15秒、容量切り替え20秒待機）
   - グラフ生成機能（ブランド別にPNG出力）
   - ユーザ指定による柔軟なターゲット追加
+  - グラフの性能を最適化 (ver1.1)
 
 ============================================================
 [コマンド例]
