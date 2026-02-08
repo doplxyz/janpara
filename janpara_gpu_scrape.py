@@ -46,51 +46,63 @@ from typing import List, Optional, Tuple, Dict, Set
 # ============================================================
 # LAYOUT CONFIGURATION SECTION (Graph)
 # ============================================================
-FIGURE_WIDTH = 12
-FIGURE_HEIGHT_BASE = 4.0
-FIGURE_HEIGHT_PER_ROW = 0.65
-FIGURE_HEIGHT_OFFSET = 1.2
-FIGURE_DPI = 100
+FIGURE_WIDTH = 12              # グラフ全体の幅,default,12
+FIGURE_HEIGHT_BASE = 4.0       # 最小の高さ,default,4.0
+FIGURE_HEIGHT_PER_ROW = 0.65   # 1行あたりの追加高さ,default,0.65
+FIGURE_HEIGHT_OFFSET = 1.2     # 高さ計算のオフセット,default,1.2
+FIGURE_DPI = 100               # 解像度(DPI),default,120
 
-MARGIN_TOP = 0.90
-MARGIN_BOTTOM = 0.05
-MARGIN_RIGHT = 0.98
-MARGIN_LEFT = 0.07
+MARGIN_TOP = 0.90              # 上マージン(0.0-1.0),default,0.90
+MARGIN_BOTTOM = 0.05           # 下マージン(0.0-1.0),default,0.05
+MARGIN_RIGHT = 0.98           # 右マージン(0.0-1.0),default,0.995
+MARGIN_LEFT = 0.12             # 左マージン(0.0-1.0),default,0.05
 
-BAR_HEIGHT = 0.62
-BAR_AVG_RATIO = 0.70
-BAR_MIN_RATIO = 0.40
+BAR_HEIGHT = 0.62              # バーの高さ (MAX),default,0.62
+BAR_AVG_RATIO = 0.70            # AVGバーの高さ比率(MAXバーに対する),default,0.7
+BAR_MIN_RATIO = 0.40           # MINバーの高さ比率(MAXバーに対する),default,0.45
 
-COLOR_MAX = "#FF8888"
-COLOR_AVG = "#66CC66"
-COLOR_MIN = "#6666FF"
+# --- Bar Color Settings ---
+COLOR_MAX = "#FF6666"          # MAX価格の色(赤系),default,#FF6666
+COLOR_AVG = "#66CC66"          # AVG価格の色(緑系),default,#66CC66
+COLOR_MIN = "#6666FF"          # MIN価格の色(青系),default,#6666FF
 
-ALPHA_MAX = 0.38
-ALPHA_AVG = 0.39
-ALPHA_MIN = 0.40
+# --- Bar Alpha (Transparency) Settings ---
+ALPHA_MAX = 0.38                # MAX価格の透明度(0.0-1.0),default,0.8
+ALPHA_AVG = 0.39                # AVG価格の透明度(0.0-1.0),default,0.9
+ALPHA_MIN = 0.40                # MIN価格の透明度(0.0-1.0),default,1.0
 
-X_AXIS_MAX_BAR_POSITION = 0.92
+# --- X-Axis Settings ---
+X_AXIS_MAX_BAR_POSITION = 0.92 # 最大バーがX軸上で表示される位置(0.0-1.0)
+                               # 例: 0.60 = グラフ幅の60%位置に最大値が来る,default,0.60
 
-TEXT_START_MULTIPLIER = 0.10
-TEXT_START_MIN_RATIO = 0.10
+# --- Text Area Layout Settings ---
+TEXT_START_MULTIPLIER = 0.10   # テキスト開始位置の倍率(global_max * この値),default,1.00
+TEXT_START_MIN_RATIO = 0.10    # テキスト開始位置の最小比率(xlim_right * この値),default,0.60
 
-COLUMN_WIDTH_MIN = 1.1
-COLUMN_WIDTH_AVG = 1.1
-COLUMN_WIDTH_MAX = 1.1
-COLUMN_WIDTH_CNT = 0.3
+# --- Column Width Settings (Text Area) ---
+# 各列の幅の比率。合計値で正規化されます。
+COLUMN_WIDTH_MIN = 1.1         # MIN列の幅,default,1.2
+COLUMN_WIDTH_AVG = 1.1         # AVG列の幅,default,1.2
+COLUMN_WIDTH_MAX = 1.1         # MAX列の幅,default,1.2
+COLUMN_WIDTH_CNT = 0.3         # Count列の幅(他より狭く設定),default,0.5
 
-TITLE_FONTSIZE = 16
-TITLE_PAD = 20
-LEGEND_LOCATION = "lower right"
-LEGEND_BBOX_X = 1.00
-LEGEND_BBOX_Y = 1.01
-LEGEND_NCOL = 3
-LEGEND_FONTSIZE = 10
-HEADER_Y_POSITION = -0.70
-HEADER_FONTSIZE = 10
-DATA_TEXT_FONTSIZE = 10
-DATA_COUNT_FONTSIZE = 11
-Y_LABEL_FONTSIZE = 12
+# --- Title Settings ---
+TITLE_FONTSIZE = 16            # タイトルのフォントサイズ,default,16
+TITLE_PAD = 20                 # タイトルと図の間隔,default,20
+
+# --- Legend Settings ---
+LEGEND_LOCATION = "lower right"        # 凡例の位置,default,
+LEGEND_BBOX_X = 1.00                   # 凡例のX位置(bbox_to_anchor),default,1.00
+LEGEND_BBOX_Y = 1.01                   # 凡例のY位置(bbox_to_anchor),default,1.01
+LEGEND_NCOL = 3                        # 凡例の列数,default,3
+
+# --- Header Row Settings (Column Labels) ---
+LEGEND_FONTSIZE = 10                   # 凡例のフォントサイズ,default,10
+HEADER_Y_POSITION = -0.70       # ヘッダー行のY位置(負の値で上に配置),default,-0.70
+HEADER_FONTSIZE = 10            # ヘッダーのフォントサイズ,default,10
+DATA_TEXT_FONTSIZE = 10         # データテキストのフォントサイズ,default,11
+DATA_COUNT_FONTSIZE = 11        # Count列のフォントサイズ,default,11
+Y_LABEL_FONTSIZE = 12           # Y軸ラベルのフォントサイズ,default,11
 
 # ============================================================
 # Global Settings
