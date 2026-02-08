@@ -371,8 +371,8 @@ class GPUScraper:
                     model = m_model.group(1)
                     model = f"RTX{model}"
 
-                # RTX8000 (Quadro)を除外
-                if model == "RTX8000":
+                # Quadroを除外
+                if re.search(r"Quadro", text, re.IGNORECASE):
                     model = None
 
             elif self.brand.lower() == "radeon":
